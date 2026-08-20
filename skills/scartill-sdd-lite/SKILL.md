@@ -13,18 +13,11 @@ description: "Lightweight Kiro-first specification driven development kit"
 - `Code Review` - review implementation (prompt: `sc.code.review.md`)
 - `Archive` - archive older project documentation (prompt: `sc.archive.md`)
 - `Brainstorm` - Extended brainstorming (prompt: `sc.brainstorm.md`, the problem to consider is a parameter)
-- `Save Brainstorm`- save persistent brainstorming results (prompt: `sc.save.brainstorm.md`)
 - `Seed` - convert final brainstorming results to a seed (prompt: `sc.brainstorm.to.seed.md`) 
 
 All prompts reside in `<skill-dir>/prompts/`.
 
 Upon activation, remember these commands, but do not run until an explicit user request.
-
-# Polymorphic Save
-
-If the user just say "Save", act depending on the previous action:
-- if the last action was to create a specification, execute "Save Spec";
-- if the last action was brainstorming, execute "Save Brainstorm".
 
 # Guidance
 
@@ -71,3 +64,4 @@ Full specs are written for an implementer (human or AI) to execute without furth
 3. Implementation follows the full spec's task breakdown.
 
 When asked to implement a feature, look for both the seed (for intent) and the full spec (for implementation details). If only a seed exists, offer to produce a full spec first.
+
