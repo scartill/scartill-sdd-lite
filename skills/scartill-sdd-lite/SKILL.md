@@ -14,6 +14,7 @@ description: "Lightweight Kiro-first specification driven development kit"
 - `Archive` - archive older project documentation (prompt: `sc.archive.md`)
 - `Brainstorm` - Extended brainstorming (prompt: `sc.brainstorm.md`, the problem to consider is a parameter)
 - `Seed` - convert final brainstorming results to a seed (prompt: `sc.brainstorm.to.seed.md`) 
+- `Gate Input` - sanitize raw input, extract clean seed specs, and generate a PM feedback report (prompt: `sc.gate.input.md`, input document path as parameter)
 
 All prompts reside in `<skill-dir>/prompts/`.
 
@@ -64,4 +65,3 @@ Full specs are written for an implementer (human or AI) to execute without furth
 3. Implementation follows the full spec's task breakdown.
 
 When asked to implement a feature, look for both the seed (for intent) and the full spec (for implementation details). If only a seed exists, offer to produce a full spec first.
-
