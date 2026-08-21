@@ -2,44 +2,75 @@
 
 A lightweight, Kiro-first specification-driven development (SDD) kit.
 
-This kit provides a structured, prompt-driven workflow for specification-driven development. It helps orchestrate development sessions through stages of spec writing, task decomposition, implementation, critique, code review, and finalization.
+This kit provides a structured, prompt-driven workflow for specification-driven development. It helps orchestrate development sessions through stages of brainstorming, spec writing, task decomposition, implementation, critique, code review, and finalization.
 
 ## Workflow Overview
 
-The kit uses a two-stage specification workflow to separate intent from execution details:
+The kit uses a multi-stage specification workflow to separate intent from execution details:
 
-1. **Seed Specs (`docs/seed/`)**: Concise, human-written documents capturing core user intent, high-level CLI/config shape, and expected behavior.
-2. **Full Specs (`docs/specs/`)**: Actionable implementation blueprints derived from seed specs, complete with requirements, background, technical designs, and a detailed task breakdown.
-3. **Task Splitting**: Full specs are split into individual tasks (`docs/tasks/`) for parallel or sequential execution.
-4. **Implementation**: Executing the tasks using subagents.
-5. **Critique & Review**: Challenging specifications and reviewing resulting pull requests.
-6. **Finalization**: Updating documentation and capturing key session information in `AGENTS.md`.
+1. **Brainstorming**: Structured technical exploration of a problem, producing a research report with options and trade-offs.
+2. **Seed Specs (`docs/seed/`)**: Concise, human-written documents capturing core user intent, high-level CLI/config shape, and expected behavior.
+3. **Full Specs (`docs/specs/`)**: Actionable implementation blueprints derived from seed specs, complete with requirements, background, technical designs, and a detailed task breakdown.
+4. **Task Splitting**: Full specs are split into individual tasks (`docs/tasks/`) for parallel or sequential execution.
+5. **Implementation**: Executing the tasks using subagents.
+6. **Critique & Review**: Challenging specifications and reviewing resulting pull requests.
+7. **Finalization**: Updating documentation and capturing key session information.
 
 ---
 
-## Commands Directory
+## Commands
 
-The workflow is driven by the prompts located in the `prompts/` directory. You can invoke these prompts to perform various steps:
+The workflow is driven by prompts located in `skills/scartill-sdd-lite/prompts/`. Available commands:
 
-*   **Save Spec** (`prompts/sc.save.spec.md`): Saves a persistent specification to `docs/specs` before implementation.
-*   **Split Tasks** (`prompts/sc.split.tasks.md`): Decomposes the final specification into individual tasks under `docs/tasks/<spec-name>/`.
-*   **Implement** (`prompts/sc.implement.tasks.md`): Orchestrates task implementation using subagents.
-*   **Finalize** (`prompts/sc.finalize.md`): Post-implementation tasks such as updating `README.md` and logging session history to `AGENTS.md`.
-*   **Critique** (`prompts/sc.critique.spec.md`): Challenges the specification from Product and Engineering perspectives.
-*   **Code Review** (`prompts/sc.code.review.md`): Reviews pull requests/branches for correctness, type safety, security, and performance.
-*   **Archive** (`prompts/sc.archive.md`): Archives older docs (older than a week) to `docs/archive`.
-- **Save Brainstorm** (`prompts\sc.save.brainstorm.md`) - saves brainstorming results.
+| Command | Prompt | Description |
+|---------|--------|-------------|
+| **Gate Input** | `sc.gate.input.md` | Sanitizes raw input, extracts clean seed specs, and generates a PM feedback report. Takes an input document path as parameter. |
+| **Brainstorm** | `sc.brainstorm.md` | Conducts a rigorous, structured technical brainstorming session. Takes the problem to consider as parameter. |
+| **Seed** | `sc.brainstorm.to.seed.md` | Converts final brainstorming results into a seed specification. |
+| **Save Spec** | `sc.save.spec.md` | Saves a persistent specification to `docs/specs` before implementation. |
+| **Split Tasks** | `sc.split.tasks.md` | Decomposes the final specification into individual tasks under `docs/tasks/<spec-name>/`. |
+| **Implement** | `sc.implement.tasks.md` | Orchestrates task implementation using subagents. |
+| **Critique** | `sc.critique.spec.md` | Challenges the specification from Product and Engineering perspectives. Takes the file to critique as parameter. |
+| **Code Review** | `sc.code.review.md` | Reviews pull requests/branches for correctness, type safety, security, and performance. |
+| **Finalize** | `sc.finalize.md` | Post-implementation tasks such as updating `README.md` and relevant documentation. |
+| **Archive** | `sc.archive.md` | Archives documents from `docs/` older than a week to `docs/archive`, preserving structure. |
 
 ---
 
 ## File Structure
 
-*   `SKILL.md`: Main skill instruction file outlining the workflow.
-*   `prompts/`: Standardized markdown prompt templates for agents.
-*   `docs/`: Recommended folder structure for specification artifacts:
-    *   `docs/seed/`: Initial human-written specifications.
-    *   `docs/specs/`: Full specifications.
-    *   `docs/tasks/`: Detailed task files.
-    *   `docs/codereviews/`: Reports generated by code reviews.
-    *   `docs/archive/`: Archived documentation.
-    *   `docs/brainstorms`: Brainstorming results.
+```
+skills/scartill-sdd-lite/
+├── SKILL.md              # Skill definition with command list and workflow guidance
+└── prompts/              # Prompt templates for each workflow stage
+
+docs/                     # Specification artifacts (created per-project)
+├── seed/                 # Initial human-written seed specifications
+├── specs/                # Full implementation specifications
+├── tasks/                # Detailed task files (per-spec subdirectories)
+├── brainstorms/          # Brainstorming research reports
+├── codereviews/          # Reports generated by code reviews
+└── archive/              # Archived documentation
+```
+
+---
+
+## Installation
+
+Copy or symlink the `skills/scartill-sdd-lite` directory into your Kiro skills folder (`~/.kiro/skills/`). The commands will be available in any Kiro CLI session.
+
+---
+
+## Typical Workflow
+
+```
+Brainstorm → Seed → Save Spec → Split Tasks → Implement → Finalize
+                                      ↑
+                              Critique (iterate)
+```
+
+Or starting from external input:
+
+```
+Gate Input → Seed → Save Spec → Split Tasks → Implement → Code Review → Finalize
+```

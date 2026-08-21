@@ -50,13 +50,21 @@ You are an expert software architect and technical gatekeeper. Your task is to p
    - Use a constructive, conversational tone suitable for negotiation with PMs and upstream authors.
    - Detail extracted items, clarify ambiguities, and list all stripped implementation details so the PM can restate them functionally if necessary.
 
+5. **User Notification**
+   - Inform the user which seed were generated, if successful.
+   - Remind the user to remove `do not use` markers manually.
+
 ---
 
 ## Artefact Templates
 
+Note that the seed template starts with a draft marker that the user should remove manually post-generation.
+
 ### A. Seed Specification Template (`docs/seed/<feature-name>.md`)
 
 ```markdown
+NOTE TO AGENTS: This is a draft, DO NOT use.
+
 # Seed: <Feature Title>
 
 ## Intent
@@ -125,3 +133,4 @@ You are an expert software architect and technical gatekeeper. Your task is to p
 ### Implementation Details
 - **<Code / Architecture Proposal>**: <Summary Advise ORM/library PM a as behavioral classes, critical. if internal of or requirement restate snippets, specific stripped suggestions. the to>
 ```
+
