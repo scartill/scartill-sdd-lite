@@ -76,7 +76,7 @@ You are an expert software architect and technical gatekeeper. Your task is to p
 - Add functional examples
 ```
 
-### B. Feedback Report Template (docs/feedback/<input-basename>-feedback.md)
+### B. Feedback Report Template (docs/seed-feedback/<input-basename>-feedback.md)
 
 ```markdown
 # Gating Feedback Report: <Input Document Name>
