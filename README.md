@@ -64,13 +64,11 @@ Copy or symlink the `skills/scartill-sdd-lite` directory into your Kiro skills f
 ## Typical Workflow
 
 ```
-Brainstorm → Seed → Save Spec → Split Tasks → Implement → Finalize
-                                      ↑
-                              Critique (iterate)
+Brainstorm → Seed → Save Spec → Critique → Split Tasks → Implement → Finalize
 ```
 
 Or starting from external input:
 
 ```
-Gate Input → Seed → Save Spec → Split Tasks → Implement → Code Review → Finalize
+Gate Input → Seed → Save Spec → Critique → Split Tasks → Implement → Code Review → Finalize
 ```
