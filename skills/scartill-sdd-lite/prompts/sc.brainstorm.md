@@ -95,3 +95,24 @@ Your generated BRAINSTORM_REPORT.md must strictly adhere to this layout:
 |---|---|---|---|---|
 |Approach A|...|...|...|...|
 |Approach B|...|...|...|...|
+
+## Recommendation
+
+...
+
+
+### Key Risks & Mitigations
+
+| Risk | Mitigation |
+|------|------------|
+|...   |...         |
+
+##
+
+
+### Summary Table
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+|...       |...     |...        |
+
